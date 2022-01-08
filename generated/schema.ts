@@ -17,7 +17,7 @@ export class User extends Entity {
     this.set("id", Value.fromString(id));
 
     this.set("totalTransfers", Value.fromBigInt(BigInt.zero()));
-    this.set("totalAmount", Value.fromString(""));
+    this.set("totalAmount", Value.fromBigInt(BigInt.zero()));
   }
 
   save(): void {
@@ -55,12 +55,12 @@ export class User extends Entity {
     this.set("totalTransfers", Value.fromBigInt(value));
   }
 
-  get totalAmount(): string {
+  get totalAmount(): BigInt {
     let value = this.get("totalAmount");
-    return value!.toString();
+    return value!.toBigInt();
   }
 
-  set totalAmount(value: string) {
-    this.set("totalAmount", Value.fromString(value));
+  set totalAmount(value: BigInt) {
+    this.set("totalAmount", Value.fromBigInt(value));
   }
 }
